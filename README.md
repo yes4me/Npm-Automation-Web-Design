@@ -1,5 +1,5 @@
 
-# Protractor project
+# Automation Web Design project
 
 ### What is it?
 This is an example to Automation Web Design with Gulp

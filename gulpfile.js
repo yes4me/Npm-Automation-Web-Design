@@ -107,6 +107,7 @@ gulp.task('default', function() {
     return gutil.env.env === 'prod'? gutil.log('Gulp is running in Prod!') : gutil.log('Gulp is running!');
 });
 
+// To stop "gulp compact" from hangout
 gulp.on('stop', function () {
     process.nextTick(function () {
         process.exit(0);

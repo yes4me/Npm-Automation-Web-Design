@@ -26,8 +26,8 @@ var imagemin    = require('gulp-imagemin'),
     uglify      = require('gulp-uglify'),
     sass        = require('gulp-sass'),
     autoprefix  = require('gulp-autoprefixer'),
-    minifyCSS   = require('gulp-minify-css'),
-    browserSync = require('browser-sync').create();
+    minifyCSS   = require('gulp-clean-css'),
+    browserSync = require('browser-sync');
 
 
 // minify new images
@@ -39,7 +39,7 @@ gulp.task('image', function() {
         .pipe(changed(imgDst))
         .pipe(imagemin({progressive: true}))
         .pipe(gulp.dest(imgDst))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.reload({stream: true}));
 });
 
 
@@ -52,7 +52,7 @@ gulp.task('htmlpage', function() {
         .pipe(changed(htmlDst))
         .pipe(minifyHTML())
         .pipe(gulp.dest(htmlDst))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.reload({stream: true}));
 });
 
 
@@ -64,7 +64,7 @@ gulp.task('scripts', function() {
         .pipe(stripDebug())
         .pipe(uglify())
         .pipe(gulp.dest('./build/scripts/'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.reload({stream: true}));
 });
 
 
@@ -76,7 +76,7 @@ gulp.task('styles', function() {
         .pipe(autoprefix('last 2 versions'))
         .pipe(minifyCSS())
         .pipe(gulp.dest('./build/styles/'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.reload({stream: true}));
 });
 
 

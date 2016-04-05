@@ -37,7 +37,7 @@ Explication of the code: N/A
 
 * Check installation: npm -v
 * Clean the cache: npm cache clean
-* Download the dependencies: npm install
+* Download the dependencies: npm install --verbose
 * Update the dependencies: npm update
 
 
@@ -59,7 +59,7 @@ Explication of the code: N/A
 
 
 ### Bugs
-* None known at this time
+* Package "fsevents" fails to install on Windows
 
 
 ### References

@@ -36,6 +36,7 @@ Explication of the code: N/A
 [npmjs]
 
 * Check installation: npm -v
+* Clean the cache: npm cache clean
 * Download the dependencies: npm install
 * Update the dependencies: npm update
 

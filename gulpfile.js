@@ -4,7 +4,8 @@
 
 var gulp    = require('gulp'),
     gutil   = require('gulp-util'),
-    jshint  = require('gulp-jshint');
+    jshint  = require('gulp-jshint'),
+    babel   = require('gulp-babel');
 
 // configure the jshint task
 gulp.task('jshint', function() {
@@ -17,15 +18,16 @@ gulp.task('jshint', function() {
 // Web plug-ins
 // =====================================================================================================================
 
-var imagemin    = require('gulp-imagemin');
-var changed     = require('gulp-changed');
-var minifyHTML  = require('gulp-htmlmin');
-var concat      = require('gulp-concat');
-var stripDebug  = require('gulp-strip-debug');
-var uglify      = require('gulp-uglify');
-var sass        = require('gulp-sass');
-var autoprefix  = require('gulp-autoprefixer');
-var minifyCSS   = require('gulp-minify-css');
+var imagemin    = require('gulp-imagemin'),
+    changed     = require('gulp-changed'),
+    minifyHTML  = require('gulp-htmlmin'),
+    concat      = require('gulp-concat'),
+    stripDebug  = require('gulp-strip-debug'),
+    uglify      = require('gulp-uglify'),
+    sass        = require('gulp-sass'),
+    autoprefix  = require('gulp-autoprefixer'),
+    minifyCSS   = require('gulp-minify-css'),
+    browserSync = require('browser-sync').create();
 
 
 // minify new images
@@ -36,7 +38,8 @@ gulp.task('image', function() {
     return gulp.src(imgSrc)
         .pipe(changed(imgDst))
         .pipe(imagemin({progressive: true}))
-        .pipe(gulp.dest(imgDst));
+        .pipe(gulp.dest(imgDst))
+        .pipe(browserSync.stream());
 });
 
 
@@ -48,17 +51,20 @@ gulp.task('htmlpage', function() {
     return gulp.src(htmlSrc)
         .pipe(changed(htmlDst))
         .pipe(minifyHTML())
-        .pipe(gulp.dest(htmlDst));
+        .pipe(gulp.dest(htmlDst))
+        .pipe(browserSync.stream());
 });
 
 
 // JS concat, strip debugging and minify
 gulp.task('scripts', function() {
     return gulp.src(['./src/scripts/lib.js','./src/scripts/*.js'])
+        .pipe(babel())
         .pipe(concat('script.js'))
         .pipe(stripDebug())
         .pipe(uglify())
-        .pipe(gulp.dest('./build/scripts/'));
+        .pipe(gulp.dest('./build/scripts/'))
+        .pipe(browserSync.stream());
 });
 
 
@@ -69,7 +75,8 @@ gulp.task('styles', function() {
         .pipe(concat('styles.css'))
         .pipe(autoprefix('last 2 versions'))
         .pipe(minifyCSS())
-        .pipe(gulp.dest('./build/styles/'));
+        .pipe(gulp.dest('./build/styles/'))
+        .pipe(browserSync.stream());
 });
 
 
@@ -91,14 +98,24 @@ gulp.task('compact', ['image', 'htmlpage', 'scripts', 'styles'], function() {
     });
 
     // watch for CSS changes
-    gulp.watch('./src/styles/*.css', function() {
+    gulp.watch('./src/styles/*.scss', function() {
         gulp.run('styles');
     });
 });
 
+
 // =====================================================================================================================
 // Others
 // =====================================================================================================================
+
+// Static server
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+});
 
 // create a default task and just log a message
 gulp.task('default', function() {
@@ -106,6 +123,7 @@ gulp.task('default', function() {
     // Run: gulp --env=prod
     return gutil.env.env === 'prod'? gutil.log('Gulp is running in Prod!') : gutil.log('Gulp is running!');
 });
+
 
 // To stop "gulp compact" from hangout
 gulp.on('stop', function () {

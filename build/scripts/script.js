@@ -1,0 +1,1 @@
+"use strict";function writeStuff1(){var t=arguments.length<=0||void 0===arguments[0]?3:arguments[0];document.write("writeStuff1 = "+t+"<br />")}function writeStuff2(t){document.write("writeStuff2 = "+t+"<br />")}

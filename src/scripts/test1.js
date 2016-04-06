@@ -1,3 +1,3 @@
-function writeStuff1(a=5) {
-    document.write("writeStuff1 = "+ a +"<br />");
+function writeStuff1(a = 1) {
+  document.write(`writeStuff1 = ${a} <br />`);
 }

@@ -5,35 +5,24 @@
     "modules": true
   },
 
-  // http://eslint.org/docs/user-guide/configuring
   "env": {
+    "browser": true,
     "node": true,
-    "mocha": true,
     "es6": true
   },
 
-  // additional global variables your script accesses during execution
-  // Set each global variable name equal to true to allow the variable to be overwritten or false to disallow overwriting
   "globals": {
     "browser": true,
+    "by": true,
     "element": true,
     "expect": true,
     "isAngularSite": false
   },
-  /*
-    "beforeAll": true,
-    "beforeEach": true,
-    "by": true,
-    "describe": true,
-    "isAngularSite": false,
-    "it": true
-  */
 
   "plugins": [
     "react"
   ],
 
-  // which rules are enabled and at what error level
   "rules": {
     // VRS default settings
     "comma-dangle": [0, "always-multiline"],
@@ -43,13 +32,6 @@
     "no-multi-spaces": 0,					 	// disallow use of multiple spaces
     "no-unused-expressions": 0,					// disallow usage of expressions in statement position
     "padded-blocks": 0,							// enforce padding within blocks (off by default)
-    "strict": 0,								// controls location of Use Strict Directives
-
-    // Personal settings - based on https://gist.github.com/cletusw/e01a85e399ab563b1236
-    "default-case": 1,							// require default case in switch statements (off by default)
-    "new-cap": 1,								// require a capital letter for constructors
-    "no-trailing-spaces": 1,      				// disallow trailing whitespace at the end of lines
-    "no-unused-vars": 1,						// disallow declaration of variables that are not used in the code
-    "one-var": [2, "always"]                    // allow just one var statement per function (off by default)
+    "strict": 0								// controls location of Use Strict Directives
   }
 }

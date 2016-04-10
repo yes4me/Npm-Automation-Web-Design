@@ -46,16 +46,20 @@ Explication of the code: N/A
 
 
 ### Packages recommended:
-* [tutorial 1 on Gulp.js] to optimize a website, use the following packages:
-    * gulp-util: get environment variables passed in the console to gulp 39k
-    * gulp-strip-debug: stripping console statements 0.3k
-    * gulp-autoprefixer: add vendor prefixes to CSS rules to make it compliant with older browsers 6k
-    * gulp-sass: generate CSS from SCSS 7k
+* to optimize a website, use the following packages:
+    * gulp-[autoprefixer]: add vendor prefixes to CSS rules to make it compliant with older browsers 6k
+    * gulp-changed: detect whether files in the stream changed (alternative: gulp-watch)
+    * gulp-clean-css: reducing the size of CSS files 6k
     * gulp-concat: combining all files 11k
     * gulp-htmlmin: reducing the size of HTML 1k
-    * gulp-uglify: reducing the size of JS 12k
-    * gulp-minify-css: reducing the size of CSS files 6k
     * gulp-imagemin: reducing the size of image 2.8k
+    * gulp-inject: takes a stream of source files, and injects in the target stream files 7k
+    * gulp-plumber: Prevent pipe breaking caused by errors from gulp plugins 16k
+    * gulp-sass: generate CSS from SCSS 7k
+    * gulp-sourcemaps: for easier debugging
+    * gulp-strip-debug: stripping console statements 0.3k
+    * gulp-uglify: reducing the size of JS 12k
+    * gulp-util: get environment variables passed in the console to gulp 39k
 
 
 ### Bugs
@@ -64,12 +68,16 @@ Explication of the code: N/A
 
 ### References
 * README.md: [README.md syntax] and [README.md live test]
-* [SASS syntax]
 * [opinion of Grunt vs Gulp] published on May 11, 2015
+* [SASS syntax]
+* The NoSQL DB [MongoDB]
+* [tutorial 1 on Gulp.js]
+* [tutorial 2 on Gulp.js]
 
 
 
 [Git]: https://git-scm.com/downloads
+[autoprefixer]: <http://nadikun.com/how-to-add-autoprefixer-to-work-with-bootstrap-using-less/>
 [gulp]: https://www.npmjs.com/package/gulp
 [gulp-cli]: https://www.npmjs.com/package/gulp-cli
 [npmjs]: https://www.npmjs.com/browse/star
@@ -78,6 +86,8 @@ Explication of the code: N/A
 
 [README.md syntax]: <https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html>
 [README.md live test]: <http://dillinger.io/>
-[SASS syntax]: <http://sass-lang.com/guide>
 [opinion of Grunt vs Gulp]: http://sixrevisions.com/web-development/grunt-vs-gulp/
+[SASS syntax]: <http://sass-lang.com/guide>
+[MongoDB]: <http://www.mkyong.com/mongodb/how-to-install-mongodb-on-windows/>
 [tutorial 1 on Gulp.js]: <http://www.sitepoint.com/introduction-gulp-js/>
+[tutorial 2 on Gulp.js]: <https://css-tricks.com/gulp-for-beginners/>

@@ -1,0 +1,15 @@
+// Comment will not be in the output file
+@import "links";
+
+.content {
+  border: 1pm solid #ccc;
+  padding: 20px;
+  h2 {
+    font-size: 3em;
+    margin: 20px 0;
+  }
+  p {
+    font-size: 1.5em;
+    margin: 15px 0;
+  }
+}

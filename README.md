@@ -42,7 +42,7 @@ Explication of the code: N/A
 
 
 ### Running the program
-* Command prompt: gulp <task name> like "compact" (see gulpfile.js for complete list)
+* Command prompt: gulp <task name> like "server" (see gulpfile.js for complete list)
 
 
 ### Packages recommended:

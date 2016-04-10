@@ -9,14 +9,13 @@ const
   gutil       = require('gulp-util'),
   eslint      = require('gulp-eslint'),
   babel       = require('gulp-babel'),
-  prefixCSS   = require('gulp-autoprefixer'),
   concat      = require('gulp-concat'),
-  inject      = require('gulp-inject'),
   miniHTML    = require('gulp-htmlmin'),
   miniJS      = require('gulp-uglify'),
   miniCSS     = require('gulp-clean-css'),
   miniImg     = require('gulp-imagemin'),
   plumber     = require('gulp-plumber'),
+  prefixCSS   = require('gulp-autoprefixer'),
   sass        = require('gulp-sass'),
   sourcemaps  = require('gulp-sourcemaps'),
   stripDebug  = require('gulp-strip-debug'),
@@ -40,8 +39,8 @@ const dest = {
 // Error handling
 // =================================================================================================
 
-var onError = function(err) {
-  console.log(err);
+var onError = function(error) {
+  gutil.log(gutil.colors.red(error));
   this.emit('end');
 }
 
@@ -71,7 +70,7 @@ gulp.task('script', function () {
     }))
     .pipe(babel())
     .pipe(stripDebug())
-    .pipe(concat('script.js'))
+    .pipe(concat('main.js'))
     .pipe(miniJS())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
@@ -104,14 +103,12 @@ gulp.task('image', function () {
 });
 
 
-gulp.task('htmlpage', function () {
+gulp.task('html', function () {
   return gulp.src(src.html)
     .pipe(plumber({
       errorHandler: onError
     }))
-    .pipe(inject(gulp.src([src.css]), {name: 'styles'}))
-    .pipe(inject(gulp.src([src.js]), {name: 'scripts'}))
-    //.pipe(miniHTML())
+    .pipe(miniHTML())
     .pipe(gulp.dest(dest.html));
 });
 
@@ -120,11 +117,11 @@ gulp.task('htmlpage', function () {
 // =================================================================================================
 
 // watch for code changes, and update on the fly
-gulp.task('compact', ['script', 'style', 'image', 'htmlpage'], function () {
+gulp.task('server', ['script', 'style', 'image', 'html'], function () {
   gulp.watch(src.js, ['eslint', 'scripts']);
   gulp.watch(src.css, ['style']);
   gulp.watch(src.img, ['image']);
-  gulp.watch(src.html, ['htmlpage']);
+  gulp.watch(src.html, ['html']);
 });
 
 

@@ -32,6 +32,13 @@
     "no-multi-spaces": 0,					 	// disallow use of multiple spaces
     "no-unused-expressions": 0,					// disallow usage of expressions in statement position
     "padded-blocks": 0,							// enforce padding within blocks (off by default)
-    "strict": 0								    // controls location of Use Strict Directives
+    "strict": 0,							    // controls location of Use Strict Directives
+
+    // Personal settings - based on https://gist.github.com/cletusw/e01a85e399ab563b1236
+    "default-case": 1,							// require default case in switch statements (off by default)
+    "new-cap": 1,								// require a capital letter for constructors
+    "no-trailing-spaces": 1,      				// disallow trailing whitespace at the end of lines
+    "no-unused-vars": 1,						// disallow declaration of variables that are not used in the code
+    "one-var": [2, "always"]                    // allow just one var statement per function (off by default)
   }
 }

@@ -68,8 +68,9 @@ Explication of the code: N/A
 
 ### References
 * README.md: [README.md syntax] and [README.md live test]
-* [opinion of Grunt vs Gulp] published on May 11, 2015
-* [SASS syntax]
+* [Grunt vs Gulp] published on May 11, 2015
+* [eslint] syntax
+* [SASS] syntax
 * The NoSQL DB [MongoDB]
 * [tutorial 1 on Gulp.js]
 * [tutorial 2 on Gulp.js]
@@ -86,8 +87,9 @@ Explication of the code: N/A
 
 [README.md syntax]: <https://confluence.atlassian.com/bitbucketserver/markdown-syntax-guide-776639995.html>
 [README.md live test]: <http://dillinger.io/>
-[opinion of Grunt vs Gulp]: http://sixrevisions.com/web-development/grunt-vs-gulp/
-[SASS syntax]: <http://sass-lang.com/guide>
+[Grunt vs Gulp]: http://sixrevisions.com/web-development/grunt-vs-gulp/
+[eslint]: <http://eslint.org/docs/rules/>
+[SASS]: <http://sass-lang.com/guide>
 [MongoDB]: <http://www.mkyong.com/mongodb/how-to-install-mongodb-on-windows/>
 [tutorial 1 on Gulp.js]: <http://www.sitepoint.com/introduction-gulp-js/>
 [tutorial 2 on Gulp.js]: <https://css-tricks.com/gulp-for-beginners/>

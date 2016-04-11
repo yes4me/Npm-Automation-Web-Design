@@ -80,7 +80,6 @@ gulp.task('script', function () {
     .pipe(duration('task script'));
 });
 
-
 gulp.task('style', function () {
   return gulp.src(src.css)
     .pipe(plumber({
@@ -96,7 +95,6 @@ gulp.task('style', function () {
     .pipe(duration('task style'));
 });
 
-
 gulp.task('image', function () {
   return gulp.src(src.img)
     .pipe(plumber({
@@ -106,7 +104,6 @@ gulp.task('image', function () {
     .pipe(gulp.dest(dest.img))
     .pipe(duration('task image'));
 });
-
 
 gulp.task('html', function () {
   return gulp.src(src.html)
@@ -129,7 +126,6 @@ gulp.task('server', ['script', 'style', 'image', 'html'], function () {
   gulp.watch(src.img, ['image']);
   gulp.watch(src.html, ['html']);
 });
-
 
 // create a default task and just log a message
 gulp.task('default', function () {

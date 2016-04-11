@@ -27,11 +27,11 @@
     // VRS default settings
     "comma-dangle": [0, "always-multiline"],
     "func-names": 0,							// require function expressions to have a name (off by default)
-    "key-spacing": [2, { "align": "value" }],	// enforces spacing between keys and values in object literal properties
+    "key-spacing": [2, { "align": "colon" }],	// enforces spacing between keys and values in object literal properties
     "no-console": 0,							// disallow use of console (off by default in the node environment)
     "no-multi-spaces": 0,					 	// disallow use of multiple spaces
     "no-unused-expressions": 0,					// disallow usage of expressions in statement position
     "padded-blocks": 0,							// enforce padding within blocks (off by default)
-    "strict": 0								// controls location of Use Strict Directives
+    "strict": 0								    // controls location of Use Strict Directives
   }
 }

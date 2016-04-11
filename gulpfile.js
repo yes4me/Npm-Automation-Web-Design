@@ -10,6 +10,7 @@ const
   eslint      = require('gulp-eslint'),
   babel       = require('gulp-babel'),
   concat      = require('gulp-concat'),
+  duration    = require('gulp-duration'),
   miniHTML    = require('gulp-htmlmin'),
   miniJS      = require('gulp-uglify'),
   miniCSS     = require('gulp-clean-css'),
@@ -22,27 +23,27 @@ const
   watch       = require('gulp-changed');
 
 const src = {
-  html  : "./src/**/*.html",
-  js    : "./src/scripts/**/*.js",
-  css   : "./src/styles/**/*.scss",
-  img   : "./src/images/**.*"
-}
+  html: './src/**/*.html',
+  js  : './src/scripts/**/*.js',
+  css : './src/styles/**/*.scss',
+  img : './src/images/**.*'
+};
 
 const dest = {
-  html  : "./build",
-  js    : "./build/scripts",
-  css   : "./build/style",
-  img   : "./build/images"
-}
+  html: './build',
+  js  : './build/scripts',
+  css : './build/style',
+  img : './build/images'
+};
 
 // =================================================================================================
 // Error handling
 // =================================================================================================
 
-var onError = function(error) {
+const onError = function (error) {
   gutil.log(gutil.colors.red(error));
   this.emit('end');
-}
+};
 
 // =================================================================================================
 // eslint
@@ -56,7 +57,8 @@ gulp.task('eslint', function () {
     '!node_modules/./**'
   ])
   .pipe(eslint())
-  .pipe(eslint.format());
+  .pipe(eslint.format())
+  .pipe(duration('task eslint'));
 });
 
 // =================================================================================================
@@ -74,7 +76,8 @@ gulp.task('script', function () {
     .pipe(miniJS())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(dest.js));
+    .pipe(gulp.dest(dest.js))
+    .pipe(duration('task script'));
 });
 
 
@@ -89,7 +92,8 @@ gulp.task('style', function () {
     .pipe(miniCSS())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(dest.css));
+    .pipe(gulp.dest(dest.css))
+    .pipe(duration('task style'));
 });
 
 
@@ -99,7 +103,8 @@ gulp.task('image', function () {
       errorHandler: onError
     }))
     .pipe(miniImg({ progressive: true }))
-    .pipe(gulp.dest(dest.img));
+    .pipe(gulp.dest(dest.img))
+    .pipe(duration('task image'));
 });
 
 
@@ -109,7 +114,8 @@ gulp.task('html', function () {
       errorHandler: onError
     }))
     .pipe(miniHTML())
-    .pipe(gulp.dest(dest.html));
+    .pipe(gulp.dest(dest.html))
+  .pipe(duration('task html'));
 });
 
 // =================================================================================================

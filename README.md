@@ -2,7 +2,7 @@
 # Automation Web Design project
 
 ### What is it?
-This is an example to Automation Web Design with Gulp
+This is an example to Automation Web Design using Gulp
 
 
 ### Latest Version

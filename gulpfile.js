@@ -40,7 +40,7 @@ const dest = {
 // Error handling
 // =================================================================================================
 
-const onError = function (error) {
+const onError = (error) => {
   gutil.log(gutil.colors.red(error));
   this.emit('end');
 };
@@ -50,7 +50,7 @@ const onError = function (error) {
 // =================================================================================================
 
 // configure the eslint task
-gulp.task('eslint', function () {
+gulp.task('eslint', () => {
   return gulp.src([
     '**/*.js',
     '!build/./**',
@@ -65,7 +65,7 @@ gulp.task('eslint', function () {
 // Plug-ins
 // =================================================================================================
 
-gulp.task('script', function () {
+gulp.task('script', () => {
   return gulp.src(src.js)
     .pipe(plumber({
       errorHandler: onError
@@ -80,7 +80,7 @@ gulp.task('script', function () {
     .pipe(duration('task script'));
 });
 
-gulp.task('style', function () {
+gulp.task('style', () => {
   return gulp.src(src.css)
     .pipe(plumber({
       errorHandler: onError
@@ -95,7 +95,7 @@ gulp.task('style', function () {
     .pipe(duration('task style'));
 });
 
-gulp.task('image', function () {
+gulp.task('image', () => {
   return gulp.src(src.img)
     .pipe(plumber({
       errorHandler: onError
@@ -105,7 +105,7 @@ gulp.task('image', function () {
     .pipe(duration('task image'));
 });
 
-gulp.task('html', function () {
+gulp.task('html', () => {
   return gulp.src(src.html)
     .pipe(plumber({
       errorHandler: onError
@@ -120,7 +120,7 @@ gulp.task('html', function () {
 // =================================================================================================
 
 // watch for code changes, and update on the fly
-gulp.task('server', ['script', 'style', 'image', 'html'], function () {
+gulp.task('server', ['script', 'style', 'image', 'html'], () => {
   gulp.watch(src.js, ['eslint', 'scripts']);
   gulp.watch(src.css, ['style']);
   gulp.watch(src.img, ['image']);
@@ -128,7 +128,7 @@ gulp.task('server', ['script', 'style', 'image', 'html'], function () {
 });
 
 // create a default task and just log a message
-gulp.task('default', function () {
+gulp.task('default', () => {
   // Run: gulp
   // Run: gulp --env=prod
   return gutil.env.env === 'prod' ?
